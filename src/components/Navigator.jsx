@@ -45,12 +45,28 @@ const Navigator = () => {
 
   return (
     <div className='ml-auto flex gap-3'>
-      <Link href='/cart'>Cart</Link>
-      <Link href='/credits'>Credits : {credit} </Link>
+      <Link
+        className='border-2 border-cyan-500 px-3 rounded-md hover:bg-cyan-500 hover:text-white duration-300'
+        href='/cart'>
+        Cart
+      </Link>
+      <Link
+        className='border-2 border-cyan-500 px-3 rounded-md hover:bg-cyan-500 hover:text-white duration-300'
+        href='/credits'>
+        Credits : {credit}
+      </Link>
       {!!token ? (
-        <button onClick={logOut}>Logout</button>
+        <button
+          className='border-2 border-cyan-500 px-3 rounded-md hover:bg-cyan-500 hover:text-white duration-300'
+          onClick={logOut}>
+          Logout
+        </button>
       ) : (
-        <Link href='/account/login'>Login</Link>
+        <Link
+          className='border-2 border-cyan-500 px-3 rounded-md hover:bg-cyan-500 hover:text-white duration-300'
+          href='/account/login'>
+          Login
+        </Link>
       )}
     </div>
   );
