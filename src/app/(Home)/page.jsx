@@ -3,7 +3,9 @@ import Product from "@/components/Product";
 const APIURL = process.env.NEXT_PUBLIC_API;
 
 async function Home() {
-  const response = await fetch(`${APIURL}/api/v1/products/allProducts`);
+  const response = await fetch(`${APIURL}/api/v1/products/allProducts`, {
+    cache: "no-store",
+  });
   const data = await response.json();
   // console.log(data.allProducts);
   return (

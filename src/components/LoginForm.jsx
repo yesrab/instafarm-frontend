@@ -40,6 +40,7 @@ const LoginForm = () => {
     if (data.status === "success") {
       toast.success("logged in successfully");
       localStorage.setItem("token", data.token);
+      document.cookie = `token=${data.token}; path=/`;
       router.push("/");
     }
     if (data.error) {

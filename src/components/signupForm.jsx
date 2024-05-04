@@ -70,6 +70,7 @@ const SignupForm = () => {
     if (data.status === "success") {
       toast.success("Account Created");
       localStorage.setItem("token", data.token);
+      document.cookie = `token=${data.token}; path=/`;
       router.push("/");
     }
   };
