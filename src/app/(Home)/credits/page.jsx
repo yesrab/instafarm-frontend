@@ -7,18 +7,16 @@ const CreditsPage = () => {
       <h1 className='text-5xl text-center'>
         Buy more credits for your account!
       </h1>
-      <div className='flex flex-col md:flex-row justify-center gap-16 my-3'>
-        <CreditsBanner
-          tag='Insta credits budget pack!'
-          credit={100}
-          size={60}
-        />
-        <CreditsBanner tag='Insta credits mega pack!' credit={500} size={75} />
-        <CreditsBanner
-          tag='Insta credits medium pack!'
-          credit={350}
-          size={60}
-        />
+      <div className='flex  flex-col md:flex-row justify-center gap-16 my-3'>
+        <div className='max-h-[65vh]'>
+          <CreditsBanner tag='Insta credits budget pack!' credit={100} />
+        </div>
+        <div className='min-h-[75vh]'>
+          <CreditsBanner tag='Insta credits mega pack!' credit={500} />
+        </div>
+        <div className='max-h-[65vh]'>
+          <CreditsBanner tag='Insta credits medium pack!' credit={350} />
+        </div>
       </div>
     </main>
   );

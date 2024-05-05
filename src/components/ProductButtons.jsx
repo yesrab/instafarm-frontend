@@ -2,6 +2,7 @@
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+const APIURL = process.env.NEXT_PUBLIC_API;
 
 const ProductButtons = ({ id }) => {
   const [token, setToken] = useState("");
@@ -18,9 +19,28 @@ const ProductButtons = ({ id }) => {
     }
   };
 
-  const addToCart = (id) => {
+  const addToCart = async (id) => {
     if (token) {
-      toast(`added product ${id}`);
+      const addProductRequest = new Request(
+        `${APIURL}/api/v1/cart/addProduct`,
+        {
+          method: "POST",
+          body: JSON.stringify({ productId: id }),
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
+          },
+          body: JSON.stringify({ productId: id }),
+        }
+      );
+      const response = await fetch(addProductRequest);
+      const data = await response.json();
+      if (data.status === "success") {
+        toast.success(data.message);
+      }
+      if (data.error) {
+        toast.error(data.error);
+      }
     } else {
       toast("login to add to cart");
       router.push("/account/login");

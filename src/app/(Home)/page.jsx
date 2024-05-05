@@ -7,7 +7,7 @@ async function Home() {
     cache: "no-store",
   });
   const data = await response.json();
-  // console.log(data.allProducts);
+
   return (
     <main className='min-h-[90%] p-2 bg-slate-50'>
       <h1 className='text-2xl px-5'>All products !</h1>
