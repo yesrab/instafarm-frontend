@@ -56,13 +56,13 @@ const ProductButtons = ({ id }) => {
         className='border-2 px-3 py-2 rounded-md bg-yellow-200 font-medium ease-in-out duration-300 hover:scale-110'>
         + add to cart
       </button>
-      <button
+      {/* <button
         onClick={() => {
           buyNow(id);
         }}
         className='border-2 px-3 py-2 rounded-md bg-cyan-200 font-medium ease-in-out duration-300 hover:scale-110'>
         Buy now
-      </button>
+      </button> */}
     </span>
   );
 };

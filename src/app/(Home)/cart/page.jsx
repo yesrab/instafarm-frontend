@@ -4,6 +4,7 @@ import CartItem from "@/components/CartItem";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 const CartPage = () => {
   const router = useRouter();
   const [token, setToken] = useState(null);
@@ -42,6 +43,9 @@ const CartPage = () => {
         }
       );
       console.log(response.data);
+      if (response.data.error) {
+        return toast.error(response.data.message);
+      }
       router.push(`/order/${response.data.orderId}`);
     }
   };
