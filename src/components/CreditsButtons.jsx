@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import Cashfree from "./CashFree";
 const APIURL = process.env.NEXT_PUBLIC_API;
+import { load } from "@cashfreepayments/cashfree-js";
 
 const CreditsButtons = ({ credit }) => {
   const [payment, setPayment] = useState("");
@@ -33,6 +34,15 @@ const CreditsButtons = ({ credit }) => {
         // toast.success(`You have purchased ${credit} credits`);
         console.log(data);
         setPayment(data.sessionID);
+        let checkOutOptions = {
+          paymentSessionId: data.sessionID,
+          returnUrl: `${APIURL}/api/v1/account/paymentStatus/{order_id}`,
+        };
+        let cashfree = await load({
+          mode: "sandbox",
+        });
+        const response = await cashfree.checkout(checkOutOptions);
+        // console.log(response);
       } else {
         toast.error("Something went wrong");
       }

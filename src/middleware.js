@@ -1,6 +1,6 @@
 import { NextResponse, NextRequest } from "next/server";
 
-const protectedRoutes = ["/credits", "/cart", "/order"];
+const protectedRoutes = ["/credits", "/cart", "/order", "/paymentStatus"];
 
 export default function middleware(req) {
   const token = req.cookies.get("token");
