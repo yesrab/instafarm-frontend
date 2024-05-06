@@ -17,8 +17,9 @@ async function Home() {
                 <h2 className='flex justify-center shadow-md items-center p-3 w-10 aspect-square'>
                   Loading...
                 </h2>
-              }>
-              <Product key={product._id} product={product} />
+              }
+              key={product._id}>
+              <Product product={product} />
             </Suspense>
           );
         })}
